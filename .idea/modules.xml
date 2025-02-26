@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/JavaWeb study.iml" filepath="$PROJECT_DIR$/.idea/JavaWeb study.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tlias-management/tlias-management.iml" filepath="$PROJECT_DIR$/tlias-management/tlias-management.iml" />
+    </modules>
+  </component>
+</project>

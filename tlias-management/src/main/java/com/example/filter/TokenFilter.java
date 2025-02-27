@@ -1,7 +1,9 @@
 package com.example.filter;
 
 import com.aliyun.oss.model.LiveChannelListing;
+import com.example.utils.CurrentHolder;
 import com.example.utils.JwtUtils;
+import io.jsonwebtoken.Claims;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
@@ -39,7 +41,10 @@ public class TokenFilter implements Filter {
 
         //5.校验token
         try{
-            JwtUtils.parseJWT(token);
+            Claims claims = JwtUtils.parseJWT(token);
+            Integer empId = Integer.valueOf(claims.get("id").toString());
+            CurrentHolder.setCurrentId(empId);
+            log.info("当前登录员工ID：{},将其存入ThreadLocal",empId);
         } catch (Exception e) {
             log.info("token解析失败，拦截,401");
             response.setStatus(401);
@@ -49,5 +54,8 @@ public class TokenFilter implements Filter {
         //6.放行
         log.info("token解析成功，放行");
         filterChain.doFilter(request,response);
+
+        //7.清除ThreadLocal
+        CurrentHolder.remove();
     }
 }

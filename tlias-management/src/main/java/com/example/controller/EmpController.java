@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.anno.Log;
 import com.example.pojo.Emp;
 import com.example.pojo.EmpQueryParam;
 import com.example.pojo.PageResult;
@@ -30,6 +31,7 @@ public class EmpController {
         return Result.success(pageResult);
     }
 
+    @Log
     @PostMapping
     public Result save(@RequestBody Emp emp){
         log.info("新增员工：{}",emp);
@@ -37,6 +39,7 @@ public class EmpController {
         return Result.success();
     }
 
+    @Log
     @DeleteMapping
     public Result delete(@RequestParam List<Integer> ids){
         log.info("根据id删除员工：{}", ids);
@@ -54,6 +57,7 @@ public class EmpController {
     /**
      * 更新员工信息
      */
+    @Log
     @PutMapping
     public Result update(@RequestBody Emp emp){
         log.info("修改员工信息, {}", emp);

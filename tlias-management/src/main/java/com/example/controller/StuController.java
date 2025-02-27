@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.anno.Log;
 import com.example.pojo.PageResult;
 import com.example.pojo.Result;
 import com.example.pojo.StuQueryParam;
@@ -26,6 +27,7 @@ public class StuController {
         return Result.success(pageResult);
     }
 
+    @Log
     @DeleteMapping("/{ids}")
     public Result delete(@PathVariable List<Integer> ids){
         log.info("根据id删除学生：{}", ids);
@@ -33,6 +35,7 @@ public class StuController {
         return Result.success();
     }
 
+    @Log
     @PostMapping
     public Result add(@RequestBody Student student){
         log.info("保存学生信息：{}", student);
@@ -47,6 +50,7 @@ public class StuController {
         return Result.success(student);
     }
 
+    @Log
     @PutMapping
     public Result update(@RequestBody Student student){
         log.info("更新学生信息：{}", student);
@@ -54,6 +58,7 @@ public class StuController {
         return Result.success();
     }
 
+    @Log
     @PutMapping("/violation/{id}/{score}")
     public Result violate(@PathVariable Integer id,@PathVariable Integer score){
         log.info("学生{}违规，扣除积分：{}", id, score);

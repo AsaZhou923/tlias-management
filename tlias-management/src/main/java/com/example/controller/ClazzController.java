@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.anno.Log;
 import com.example.pojo.Clazz;
 import com.example.pojo.ClazzQueryParam;
 import com.example.pojo.PageResult;
@@ -26,6 +27,7 @@ public class ClazzController {
         return Result.success(pageResult);
     }
 
+    @Log
     @DeleteMapping("/{id}")
     public Result delete(@PathVariable Integer id){
         log.info("根据id删除班级信息：{}", id);
@@ -33,6 +35,7 @@ public class ClazzController {
         return Result.success();
     }
 
+    @Log
     @PostMapping
     public Result add(@RequestBody Clazz clazz){
         log.info("保存班级信息：{}", clazz);
@@ -47,6 +50,7 @@ public class ClazzController {
         return Result.success(clazz);
     }
 
+    @Log
     @PutMapping
     public Result updata(@RequestBody Clazz clazz){
         log.info("修改班级信息：{}", clazz);
